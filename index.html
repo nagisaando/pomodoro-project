@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Pomodoro Timer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Setting</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">TImesheets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Reports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="pomodoro container text-center">
+        <div class="container mt-5 mb-5">
+            <button class="btn btn-outline-light pomodoro-btn">POMODORO</button>
+            <button class="btn btn-outline-light sh-break-btn">SHORT BREAK</button>
+            <button class="btn btn-outline-light ln-break-btn">LONG BREAK</button>
+        </div>
+        
+        <div class="timer container">
+            <!-- <div class="wave-wrapper"> -->
+            <div class="container wave">
+                <div class="container timer-display">
+                    
+                    <div>
+                        <p class="display-4 time"><span class="minutes">00</span>:<span class="sec">00</span></p>
+                    </div>
+                    
+                    <div class="container">
+                        <button class="btn play-icon">
+                            <svg class="bi bi-caret-right-fill" width="4em" height="4em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 011.659-.753l5.48 4.796a1 1 0 010 1.506z"/>
+                            </svg>
+                        </button>
+                        <button class="btn pause-icon d-none">
+                            <svg class="bi bi-pause mr-2" width="3.5em" height="3.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M6 3.5a.5.5 0 01.5.5v8a.5.5 0 01-1 0V4a.5.5 0 01.5-.5zm4 0a.5.5 0 01.5.5v8a.5.5 0 01-1 0V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <button class="btn reset-icon d-none">
+                            <svg class="bi bi-square-fill ml-2" width="2.2em" height="2.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="16" height="16" rx="2"/>
+                            </svg>
+                        </button>
+                        
+                        
+                        
+                    
+                    </div>
+                </div>
+            </div>
+            <!-- </div> -->
+            
+            
+        </div>
+        
+        
+    </div>
+    <div class="todoList">
+        <div class="todoSheet"></div>
+        <div class="complete-track"></div>
+    </div>
+    
+    <footer class="footer fixed-bottom font-small text-white special-color-dark pt-4">
+        <div class="text-center py-3">©copyright 2020 pupusa. All rights reserved.:
+            <a href="#"> Pupusa.com</a>
+        </div>
+
+    </footer>
+
+    <audio class="bubble-sound" src="59978__blue2107__bubble-pop.wav"></audio>
+    <script src="app.js"></script>
+
+</body> 
+
+</html>
