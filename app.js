@@ -22,6 +22,11 @@ let shortBr = 5;
 let longBr = 20;
 let reset = 0;
 
+let root = document.documentElement;
+const waveAnimation = document.querySelector('.wave-wrapper');
+
+    
+
 function handleCollapseElementClick(e) {
     let el = e.currentTarget;
         let targetEl = document.querySelector("#navbarSupportedContent");
@@ -57,46 +62,54 @@ collapseElements.forEach((el) => {
 
 function startTimerHandler() {
     let originalTime = document.querySelector('.time').textContent;
-        if(originalTime === '00:00') {
-            return;
-        } else {
-            toggleBtn();
-}
-            clearInterval(pomodoroTime);
-            isPaused = false;   
-            let min = parseInt(document.querySelector('.minutes').textContent);
-            let sec = parseInt(document.querySelector('.sec').textContent);
+    if(originalTime === '00:00') {
+        return;
+    } 
+    waveAnimation.classList.add('wave-animation')
+    root.style.setProperty('--animationrunning', 'running');
+    toggleBtn();
+       
+    clearInterval(pomodoroTime);
+    isPaused = false;   
+    let min = parseInt(document.querySelector('.minutes').textContent);
+    let sec = parseInt(document.querySelector('.sec').textContent);
             
 
-            pomodoroTime = setInterval(()=>{
-                let result = '';
+    pomodoroTime = setInterval(()=>{
+        let result = '';
                 
-                if(isPaused === false && originalTime !== '00:00'){
-                    sec--;
-                    if(sec < 0 || sec === 59){
-                        sec = 59;
-                        --min;
-                    }
+        if(isPaused === false && originalTime !== '00:00'){
+            sec--;
+            if(sec < 0 || sec === 59){
+                sec = 59;
+                --min;
+            }
                     
-                    function addLeadingZeroes(time) {
-                        return time < 10 ? `0${time}` : time
-                    }
+            function addLeadingZeroes(time) {
+                return time < 10 ? `0${time}` : time
+            }
 
-                    result += `<span class="minutes">${addLeadingZeroes(min)}</span>:<span class="sec">${addLeadingZeroes(sec)}</span>`
-                    timeDisplay.innerHTML = result;
+            result += `<span class="minutes">${addLeadingZeroes(min)}</span>:<span class="sec">${addLeadingZeroes(sec)}</span>`
+            timeDisplay.innerHTML = result;
+            window.document.title = `(${timeDisplay.textContent})Pomodoro Timer`;
+            
+            
                     
-                    if(min === 0 && sec === 0) {
-                        alert.play();
-                        isPaused = true;
-                        toggleBtn();
+            if(min === 0 && sec === 0) {
+                alert.play();
+                isPaused = true;
+                toggleBtn();
+                window.document.title = 'Beep! Beep!';
+                //waveAnimation.classList.remove('wave-animation')
 
-                    }
+            }
                     
-                }
+        }
 
-            }, 1000);
+    }, 1000);
 }
 const pauseTimerHandler = function() {
+    root.style.setProperty('--animationrunning', 'paused');
     isPaused = true;
     toggleBtn();
 }
@@ -108,31 +121,12 @@ const toggleBtn = function() {
 };
 
 
-// const resetTimerHandler = function() {
-//     let originalTime = document.querySelector('.time').textContent;
-//     setTime(reset);
-//     // if(originalTime !== '00:00') {
-//         // pauseBtn.classList.toggle('d-none');
-//         // playBtn.classList.toggle('d-none');
-//         // resetBtn.classList.toggle('d-none');
-//     // }
-    
-// };
-
-// const pomodoroHandler = function() {
-//     setTime(pomodoro);
-// };
-
-// const shortBrHandler = function() {
-//     setTime(shortBr);
-// };
-
-// const longBrHandler = function() {
-//     setTime(longBr);
-    
-// };
-
 function setTime(time) {
+    waveAnimation.classList.remove('wave-animation')
+    const animationTime = time * 60 + 's';
+    root.style.setProperty('--runningtime', animationTime);
+    window.document.title = 'Pomodoro Timer';
+
     isPaused = true;
     if(playBtn.classList.contains('d-none')){
         toggleBtn();
