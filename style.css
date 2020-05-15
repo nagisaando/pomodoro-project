@@ -3,9 +3,18 @@
     --animationrunning: running;
 }
 
+
 html {
     height: 100%
 }
+/* 
+body.lock-position {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    position: fixed;
+  } */
+
 
 body {
     /* background: linear-gradient(rgba(2,0,36,1) 0%, rgba(0,0,0,1) 9%, rgba(5,22,65,1) 25%, rgba(8,24,131,1) 43%, rgba(15,95,167,1) 100%, rgba(6,64,157,1) 100%, rgba(0,212,255,1) 100%) fixed; */
@@ -17,15 +26,23 @@ body {
         rgba(0,0,0,1) 100%,
         rgba(2,0,36,1) 100%
         ) fixed;
+
+    /* 
+        */
+        /* -webkit-mask-image: -webkit-radial-gradient(white, black); */
+        /* overflow: hidden; */
 }
 
 .timer-wrap {
     text-align: center;
+    overflow: hidden;
+
 }
 
 .timer {
     background: linear-gradient( rgba(208,207,226,0.7) 19%, rgba(59,137,179,0.7) 72%); 
     box-shadow: inset 0 0 50px rgba(0, 0, 0, 1);
+    position: relative;
     border-radius: 50%;
     height: 300px;
     width: 300px;
@@ -34,19 +51,23 @@ body {
     padding: 0;
     pointer-events:auto;
     vertical-align: middle;
-    position: relative;
+   
     animation: popping;
+
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
 
 }
 
 .display {
     padding-top: 30%;
-
+  
 }
 
 .wave-wrapper {
     pointer-events:none; 
-    
     position: absolute;
     height: 100%;
     width: 100%;
