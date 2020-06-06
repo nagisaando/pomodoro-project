@@ -19,7 +19,7 @@ const alert = document.querySelector('.bubble-sound');
 
 let pomodoro = 25;
 let shortBr = 5;
-let longBr = 20;
+let longBr = 15;
 let reset = 0;
 
 let root = document.documentElement;
